@@ -6,8 +6,9 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    error(error, transition) {
-      if (error) {
+    error(_error, transition) {
+      debugger;
+      if (_error) {
         return this.transitionTo('login');
       }
     }
