@@ -1,0 +1,17 @@
+{{yield}}
+{{#if loginFailed}}
+  <div class="alert alert-danger">Invalid username or password.</div>
+{{/if}}
+
+<form {{action "attemptLogin" on="submit"}}>
+  <div class="field">
+    <label>Email Address</label>
+    {{input value=email value=email}}
+  </div>
+  <div class="field">
+    <label>Password</label>
+    {{input value=password type="password"}}
+  </div>
+
+  <button type="submit" class="btn">Log in!</button>
+</form>

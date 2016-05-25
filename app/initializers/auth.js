@@ -13,7 +13,7 @@ export function initialize(application) {
   // Access AuthHelper in routes/controllers through this.get('auth').manager
   application.register('auth:main', AuthManager);
   application.inject('route', 'auth', 'auth:main');
-  application.inject('controller', 'auth', 'auth:main');
+  application.inject('component:login-form', 'auth', 'auth:main');
 }
 
 export default {

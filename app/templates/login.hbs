@@ -1,19 +1,4 @@
 {{outlet}}
 <h1>Login</h1>
 
-{{#if loginFailed}}
-  <div class="alert alert-danger">Invalid username or password.</div>
-{{/if}}
-
-<form {{action "login" on="submit"}}>
-  <div class="field">
-    <label>Email Address</label>
-    {{input valueBinding=email value=email}}
-  </div>
-  <div class="field">
-    <label>Password</label>
-    {{input valueBinding=password type="password"}}
-  </div>
-
-  <button type="submit" class="btn">Log in!</button>
-</form>
+{{login-form action="loginSucceeded"}}
