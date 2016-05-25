@@ -3,7 +3,8 @@ import Auth from 'npm:j-toker';
 
 export function initialize(application) {
   Auth.configure({
-    apiUrl: ENV.apiURL
+    apiUrl: ENV.apiURL,
+    storage: 'localStorage'
   });
 
   var AuthManager = Ember.Object.extend({
