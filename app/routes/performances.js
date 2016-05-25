@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  beforeModel() {
+    this.get('auth').manager.validateToken().fail(function() {
+      this.transitionTo('login');
+    }.bind(this));
+  },
+
   model() {
     return this.store.findAll('performance');
   },
@@ -9,7 +15,7 @@ export default Ember.Route.extend({
     error(_error, transition) {
       debugger;
       if (_error) {
-        return this.transitionTo('login');
+        // Do something; logging maybe?
       }
     }
   }
