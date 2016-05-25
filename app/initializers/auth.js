@@ -10,9 +10,10 @@ export function initialize(application) {
     manager: Auth
   });
 
-  // Access AuthHelper anywhere in routes through this.get('auth').manager
+  // Access AuthHelper in routes/controllers through this.get('auth').manager
   application.register('auth:main', AuthManager);
   application.inject('route', 'auth', 'auth:main');
+  application.inject('controller', 'auth', 'auth:main');
 }
 
 export default {
