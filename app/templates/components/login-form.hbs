@@ -1,9 +1,9 @@
 {{yield}}
-{{#if loginFailed}}
-  <div class="alert alert-danger">Invalid username or password.</div>
-{{/if}}
+{{#each errorMessages as |error|}}
+  <p>{{error}}</p>
+{{/each}}
 
-<form {{action "attemptLogin" on="submit"}}>
+<form {{action "authenticate" on="submit"}}>
   <div class="field">
     <label>Email Address</label>
     {{input value=email value=email}}

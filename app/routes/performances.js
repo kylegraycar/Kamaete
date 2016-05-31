@@ -1,12 +1,7 @@
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
-  beforeModel() {
-    this.get('auth').manager.validateToken().fail(function() {
-      this.transitionTo('login');
-    }.bind(this));
-  },
-
+export default Ember.Route.extend(AuthenticatedRouteMixin).extend({
   model() {
     return this.store.findAll('performance');
   },
