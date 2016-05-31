@@ -1,0 +1,13 @@
+{{yield}}
+<form {{action "register" on="submit"}}>
+  <div class="field">
+    <label>Email Address</label>
+    {{input value=email value=email}}
+  </div>
+  <div class="field">
+    <label>Password</label>
+    {{input value=password type="password"}}
+  </div>
+
+  <button type="submit" class="btn">Create Account</button>
+</form>

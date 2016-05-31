@@ -12,12 +12,12 @@ export default Ember.Component.extend({
         email: email,
         password: password
 
-      }).then(function() {
+      }).then(() => {
         // Login successful
         this.set('loginFailed', false);
         this.sendAction();
 
-      }.bind(this), function() {
+      }.bind(this), () => {
         this.set('loginFailed', true);
 
       }.bind(this));

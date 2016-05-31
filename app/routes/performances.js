@@ -1,20 +1,14 @@
-import Ember from 'ember';
+import AuthenticatedRoute from 'transitions/routes/authenticated';
 
-export default Ember.Route.extend({
-  beforeModel() {
-    this.get('auth').manager.validateToken().fail(function() {
-      this.transitionTo('login');
-    }.bind(this));
-  },
-
+export default AuthenticatedRoute.extend({
   model() {
     return this.store.findAll('performance');
   },
 
   actions: {
-    error(_error, transition) {
+    error(error, _transition) {
       debugger;
-      if (_error) {
+      if (error) {
         // Do something; logging maybe?
       }
     }
