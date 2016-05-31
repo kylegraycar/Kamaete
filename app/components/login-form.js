@@ -8,7 +8,7 @@ export default Ember.Component.extend({
       this.get('session').authenticate('authenticator:devise-token',
           this.get('email'), this.get('password')).catch((reason) => {
         this.set('errorMessages', reason.errors);
-      });;
+      });
     }
   }
 });
