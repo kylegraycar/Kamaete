@@ -43,7 +43,7 @@ export default DeviseAuthenticator.extend({
   },
 
   invalidate(data) {
-    $.ajax({
+    Ember.$.ajax({
       url: ENV.apiURL + '/auth/sign_out',
       method: 'DELETE',
       async: false,
