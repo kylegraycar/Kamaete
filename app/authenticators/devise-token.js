@@ -7,7 +7,7 @@ const { RSVP, isEmpty, run } = Ember;
 export default DeviseAuthenticator.extend({
   serverTokenEndpoint: ENV.apiURL + '/auth/sign_in',
 
-  restore(data){
+  restore(data) {
     return new RSVP.Promise((resolve, reject) => {
       if (!isEmpty(data.accessToken) && !isEmpty(data.expiry) &&
           !isEmpty(data.tokenType) && !isEmpty(data.uid) && !isEmpty(data.client)) {
@@ -24,7 +24,7 @@ export default DeviseAuthenticator.extend({
       const data = { password };
       data[identificationAttributeName] = identification;
 
-      this.makeRequest(data).then(function(response, status, xhr) {
+      this.makeRequest(data).then((response, status, xhr) => {
         //save the five headers needed to send to devise-token-auth
         //when making an authorized API call
         var result = {
@@ -36,7 +36,9 @@ export default DeviseAuthenticator.extend({
         };
 
         run(null, resolve, result);
-      }, function(xhr) {
+      },
+
+      (xhr) => {
         run(null, reject, xhr.responseJSON || xhr.responseText);
       });
     });
@@ -50,9 +52,9 @@ export default DeviseAuthenticator.extend({
       crossDomain: true,
 
       headers: {
-        'access-token': data['accessToken'],
-        'client': data['client'],
-        'uid': data['uid']
+        'access-token': data.accessToken,
+        client: data.client,
+        uid: data.uid
       }
     });
 
