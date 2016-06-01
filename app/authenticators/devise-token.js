@@ -41,4 +41,21 @@ export default DeviseAuthenticator.extend({
       });
     });
   },
+
+  invalidate(data) {
+    $.ajax({
+      url: ENV.apiURL + '/auth/sign_out',
+      method: 'DELETE',
+      async: false,
+      crossDomain: true,
+
+      headers: {
+        'access-token': data['accessToken'],
+        'client': data['client'],
+        'uid': data['uid']
+      }
+    });
+
+    return this._super();
+  }
 });
