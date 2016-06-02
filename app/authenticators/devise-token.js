@@ -35,6 +35,7 @@ export default DeviseAuthenticator.extend({
           client: xhr.getResponseHeader('client')
         };
 
+        // TODO: use response.data to store current user info for use in templates
         run(null, resolve, result);
       },
 

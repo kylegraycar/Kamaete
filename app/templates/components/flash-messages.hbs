@@ -1,0 +1,14 @@
+{{#each flashMessages.arrangedQueue as |flash|}}
+  {{#flash-message flash=flash as |component flash|}}
+    <div class="container">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{flash.message}}
+
+      {{#if component.showProgressBar}}
+        <div class="alert-progress">
+          <div class="alert-progressBar" style="{{component.progressDuration}}"></div>
+        </div>
+      {{/if}}
+    </div>
+  {{/flash-message}}
+{{/each}}

@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'transitions',
     environment: environment,
@@ -21,6 +21,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.apiURL = 'http://localhost:3000';
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -45,6 +46,11 @@ module.exports = function(environment) {
     ENV.baseURL = '/transitions/';
 
   }
+
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication: 'performances',
+    routeIfAlreadyAuthenticated: 'performances'
+  };
 
   return ENV;
 };
