@@ -10,6 +10,8 @@ Router.map(function () {
   this.route('login');
   this.route('register');
   this.route('account-settings', { path: '/settings' });
+  this.route('confirm-email');
+  this.route('email-confirmed');
 });
 
 export default Router;

@@ -18,7 +18,9 @@ export default Ember.Component.extend({
 
       (reason) => {
         reason.errors.forEach((error) => {
-          flashMessages.danger(error);
+          flashMessages.danger(error, {
+            sticky: true
+          });
         });
       });
     }

@@ -11,12 +11,17 @@ export default Ember.Component.extend({
 
       this.get('session').createNewAccount(this.get('email'), this.get('password'),
           this.get('password-confirmation')).then((response) => {
-        this.sendAction('register', response.data);
+        flashMessages.success('Confirmation email has been sent to ' + response.data.email, {
+          timeout: 5000
+        });
+        this.sendAction();
       },
 
       (reason) => {
         reason.errors.full_messages.forEach((error) => {
-          flashMessages.danger(error);
+          flashMessages.danger(error, {
+            sticky: true
+          });
         });
       });
     }

@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
-    register(user) {
-      debugger;
+    register() {
+      this.transitionTo('confirm-email');
     }
   }
 });
