@@ -33,6 +33,35 @@ export default Session.extend({
         run(null, reject, xhr.responseJSON || xhr.responseText);
       });
     });
+  },
+
+  deleteAccount() {
+    return new RSVP.Promise((resolve, reject) => {
+      if (this.get('isAuthenticated')) {
+        let data = this.get('data.authenticated');
+
+        Ember.$.ajax({
+          url: ENV.apiURL + '/auth/',
+          method: 'DELETE',
+          crossDomain: true,
+
+          headers: {
+            'access-token': data.accessToken,
+            uid: data.uid,
+            expiry: data.expiry,
+            client: data.client
+          }
+        }).then(() => {
+          resolve();
+        },
+
+        () => {
+          reject();
+        });
+      } else {
+        reject();
+      }
+    });
   }
 
 });
