@@ -21,6 +21,7 @@ module.exports = function (environment) {
 
   if (environment === 'development') {
     ENV.apiURL = 'http://localhost:3000';
+    ENV.hostname = 'http://localhost:4200';
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -44,7 +45,8 @@ module.exports = function (environment) {
   if (environment === 'production') {
     ENV.locationType = 'hash';
     ENV.baseURL = '/transitions/';
-
+    ENV.apiURL = '';
+    ENV.hostname = '';
   }
 
   ENV['ember-simple-auth'] = {
