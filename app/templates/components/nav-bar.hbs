@@ -26,7 +26,7 @@
         {{#if session.isAuthenticated}}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">Current User <span class="caret"></span></a>
+               aria-haspopup="true" aria-expanded="false">{{session.currentUser.email}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>{{#link-to 'account-settings'}}Settings{{/link-to}}</li>
 

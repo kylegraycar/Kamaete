@@ -5,13 +5,32 @@ import Ember from 'ember';
 const { RSVP, isEmpty, run } = Ember;
 
 export default DeviseAuthenticator.extend({
+  session: Ember.inject.service(),
   serverTokenEndpoint: ENV.apiURL + '/auth/sign_in',
 
   restore(data) {
     return new RSVP.Promise((resolve, reject) => {
       if (!isEmpty(data.accessToken) && !isEmpty(data.expiry) &&
           !isEmpty(data.tokenType) && !isEmpty(data.uid) && !isEmpty(data.client)) {
-        resolve(data);
+        Ember.$.ajax({
+          url: ENV.apiURL + '/auth/validate_token',
+          method: 'GET',
+          crossDomain: true,
+          dataType: 'json',
+
+          headers: {
+            'access-token': data.accessToken,
+            client: data.client,
+            uid: data.uid
+          }
+        }).then((response) => {
+          this.get('session').currentUser = response.data;
+          resolve(data);
+        },
+
+        () => {
+          reject();
+        });
       } else {
         reject();
       }
@@ -35,7 +54,8 @@ export default DeviseAuthenticator.extend({
           client: xhr.getResponseHeader('client')
         };
 
-        // TODO: use response.data to store current user info for use in templates
+        this.get('session').currentUser = response.data;
+
         run(null, resolve, result);
       },
 
