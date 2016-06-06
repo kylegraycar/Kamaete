@@ -16,6 +16,7 @@
 PreCommit:
   Jscs:
     enabled: true
+    flags: ['--reporter=inline']
 
   JsHint:
     enabled: true
