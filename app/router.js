@@ -5,8 +5,12 @@ const Router = Ember.Router.extend({
   location: config.locationType
 });
 
-Router.map(function () {
-  this.route('performances');
+Router.map(function() {
+  this.route('performances', function() {
+    this.route('index', { path: '/' });
+    this.route('new', { path: '/new' });
+  });
+
   this.route('login');
   this.route('register');
   this.route('account-settings', { path: '/settings' });
