@@ -1,17 +1,16 @@
-#login-form {
-  margin: auto;
-  max-width: 600px;
-}
-
-#registration-form {
-  margin: auto;
-  max-width: 600px;
-}
-
 .form-text {
   margin-bottom: 20px;
 
   p {
     font-size: 20px;
+  }
+}
+
+.center-form {
+  margin: auto;
+  max-width: 600px;
+
+  &#login-form {
+    max-width: 500px;
   }
 }
