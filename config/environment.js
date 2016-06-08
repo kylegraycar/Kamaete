@@ -44,9 +44,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.locationType = 'hash';
-    ENV.baseURL = '/transitions/';
-    ENV.apiURL = 'https://kamaete-api.herokuapp.com/';
+    ENV.apiURL = 'https://kamaete-api.herokuapp.com';
     ENV.hostname = 'https://www.kamaete.com';
   }
 
