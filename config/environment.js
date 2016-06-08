@@ -46,8 +46,8 @@ module.exports = function (environment) {
   if (environment === 'production') {
     ENV.locationType = 'hash';
     ENV.baseURL = '/transitions/';
-    ENV.apiURL = '';
-    ENV.hostname = '';
+    ENV.apiURL = 'https://kamaete-api.herokuapp.com/';
+    ENV.hostname = 'https://www.kamaete.com';
   }
 
   ENV['ember-simple-auth'] = {
