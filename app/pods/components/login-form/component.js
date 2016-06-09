@@ -9,8 +9,11 @@ export default Ember.Component.extend({
       const flashMessages = Ember.get(this, 'flashMessages');
       flashMessages.clearMessages();
 
-      this.get('session').authenticate('authenticator:devise-token',
-          this.get('email'), this.get('password')).then(() => {
+      this.get('session').authenticate('authenticator:devise-token', {
+        type: 'login',
+        email: this.get('email'),
+        password: this.get('password')
+      }).then(() => {
         flashMessages.success('Login successful; welcome back!', {
           timeout: 10000
         });

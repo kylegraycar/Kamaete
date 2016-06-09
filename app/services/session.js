@@ -25,8 +25,17 @@ export default Session.extend({
         method: 'POST',
         data,
         crossDomain: true,
-      }).then((response) => {
-        run(null, resolve, response);
+      }).then((response, status, xhr) => {
+        var result = {
+          accessToken: xhr.getResponseHeader('access-token'),
+          expiry: xhr.getResponseHeader('expiry'),
+          tokenType: xhr.getResponseHeader('token-type'),
+          uid: xhr.getResponseHeader('uid'),
+          client: xhr.getResponseHeader('client')
+        };
+
+        this.currentUser = response.data;
+        run(null, resolve, result);
       },
 
       (xhr) => {

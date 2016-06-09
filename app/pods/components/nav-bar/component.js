@@ -10,8 +10,11 @@ export default Ember.Component.extend({
       const flashMessages = Ember.get(this, 'flashMessages');
       flashMessages.clearMessages();
 
-      this.get('session').authenticate('authenticator:devise-token',
-          this.get('navbar-email'), this.get('navbar-password')).then(() => {
+      this.get('session').authenticate('authenticator:devise-token', {
+        type: 'login',
+        email: this.get('navbar-email'),
+        password: this.get('navbar-password')
+      }).then(() => {
         flashMessages.success('Login successful; welcome back!', {
           timeout: 10000
         });
@@ -22,6 +25,8 @@ export default Ember.Component.extend({
           flashMessages.danger(error, {
             sticky: true
           });
+
+          // Send user to login page, where they can reset password if needed
           this.sendAction('loginFailed');
         });
       });

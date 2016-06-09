@@ -10,11 +10,17 @@ export default Ember.Component.extend({
       flashMessages.clearMessages();
 
       this.get('session').createNewAccount(this.get('email'), this.get('password'),
-          this.get('password-confirmation')).then((response) => {
-        flashMessages.success('Confirmation email has been sent to ' + response.data.email, {
-          timeout: 5000
+          this.get('password-confirmation')).then((tokenData) => {
+        this.get('session').authenticate('authenticator:devise-token', {
+          type: 'registration',
+          tokenData
+        }).then(() => {
+          flashMessages.success('Account creation successful; welcome to Kamaete!', {
+            timeout: 5000
+          });
+          this.sendAction();
         });
-        this.sendAction();
+
       },
 
       (reason) => {
