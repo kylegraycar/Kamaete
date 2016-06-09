@@ -9,8 +9,8 @@ export default Ember.Component.extend({
       const flashMessages = Ember.get(this, 'flashMessages');
       flashMessages.clearMessages();
 
-      this.get('session').createNewAccount(this.get('email'), this.get('password'),
-          this.get('password-confirmation')).then((tokenData) => {
+      this.get('session').createNewAccount(this.get('email'), this.get('name'),
+          this.get('password'), this.get('password-confirmation')).then((tokenData) => {
         this.get('session').authenticate('authenticator:devise-token', {
           type: 'registration',
           tokenData

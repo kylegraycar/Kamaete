@@ -8,13 +8,14 @@ export default Session.extend({
 
   store: Ember.inject.service(),
 
-  // Current user is set by authenticator
+  // Current user is the data sent by the server upon successful authentication
   currentUser: {},
 
-  createNewAccount(email, password, passwordConfirmation) {
+  createNewAccount(email, name, password, passwordConfirmation) {
     return new RSVP.Promise((resolve, reject) => {
       let data = {
         email,
+        name,
         password,
         password_confirmation: passwordConfirmation,
         confirm_success_url: ENV.hostname + '/email-confirmed'
@@ -35,6 +36,7 @@ export default Session.extend({
         };
 
         this.currentUser = response.data;
+        this.updateCurrentUserIdentifier();
         run(null, resolve, result);
       },
 
@@ -71,6 +73,10 @@ export default Session.extend({
         reject();
       }
     });
+  },
+
+  updateCurrentUserIdentifier() {
+    this.currentUser.identifier = this.currentUser.name || this.currentUser.email;
   }
 
 });

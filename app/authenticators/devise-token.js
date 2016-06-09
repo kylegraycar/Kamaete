@@ -25,6 +25,8 @@ export default DeviseAuthenticator.extend({
           }
         }).then((response) => {
           this.get('session').currentUser = response.data;
+          this.get('session').updateCurrentUserIdentifier();
+
           resolve(data);
         },
 
@@ -57,6 +59,7 @@ export default DeviseAuthenticator.extend({
           };
 
           this.get('session').currentUser = response.data;
+          this.get('session').updateCurrentUserIdentifier();
 
           run(null, resolve, result);
         },
