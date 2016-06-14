@@ -1,9 +1,5 @@
-<h1>{{title}}</h1>
-
-{{#link-to 'performances.new'}}Create New Performance{{/link-to}}
-
-<ul>
+<ul class='media-list'>
   {{#each performances as |performance|}}
-    <li>{{performance.title}}</li>
+    {{performances-list-item performance=performance action="viewPerformance"}}
   {{/each}}
 </ul>

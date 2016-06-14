@@ -1,1 +1,5 @@
-{{performances-list title="My Performances" performances=model}}
+{{#link-to 'performances.new' class='btn btn-default'}}Create New Performance{{/link-to}}
+
+<h1>My Performances</h1>
+
+{{performances-list performances=model action="viewPerformance"}}

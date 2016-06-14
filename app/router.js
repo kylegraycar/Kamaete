@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('performances', function() {
     this.route('index', { path: '/' });
     this.route('new', { path: '/new' });
+    this.route('show', { path: '/:performance_id' });
   });
 
   this.route('login');
