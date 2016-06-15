@@ -1,0 +1,34 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: $footer-height;
+}
+
+.footer {
+  background-color: $navbar-inverse-bg;
+  bottom: 0;
+  height: $footer-height;
+  position: absolute;
+  width: 100%;
+
+  a {
+    color: $navbar-inverse-brand-color;
+
+    &:hover {
+      color: $navbar-inverse-brand-hover-color;
+    }
+  }
+
+  .footer-text-container {
+    height: 100%;
+
+    .footer-text {
+      color: $navbar-inverse-link-color;
+      line-height: $footer-height;
+    }
+  }
+
+}
